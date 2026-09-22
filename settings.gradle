@@ -12,6 +12,8 @@ pluginManagement {
 include("common")
 include("fabric-like")
 include("fabric")
-include("neoforge")
+// NeoForge is disabled for the 26.3 port: the Architectury Transformer fails with
+// "Unsupported class file major version 71" on :common:transformProductionNeoForge.
+// include("neoforge")
 
 rootProject.name = "architectury-enderite-mod"

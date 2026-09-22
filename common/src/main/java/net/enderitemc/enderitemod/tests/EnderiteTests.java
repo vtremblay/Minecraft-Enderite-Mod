@@ -26,7 +26,7 @@ import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.animal.sheep.Sheep;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.monster.EnderMan;
+import net.minecraft.world.entity.monster.Enderman;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
@@ -249,7 +249,7 @@ public class EnderiteTests {
         ServerLevel world = ctx.getLevel();
         BlockPos pos = ctx.absolutePos(new BlockPos(0, 1, 0));
 
-        EnderMan enderman = new EnderMan(EntityTypes.ENDERMAN, world);
+        Enderman enderman = new Enderman(EntityTypes.ENDERMAN, world);
         enderman.setPos(Vec3.atBottomCenterOf(pos));
         world.addFreshEntity(enderman);
 

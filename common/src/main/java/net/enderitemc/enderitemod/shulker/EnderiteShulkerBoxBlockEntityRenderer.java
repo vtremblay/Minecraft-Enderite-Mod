@@ -103,14 +103,25 @@ public class EnderiteShulkerBoxBlockEntityRenderer implements BlockEntityRendere
             this.model,
             openness,
             matrices,
-            spriteId.renderType(this.model::renderType),
             light,
             overlay,
             -1,
-            this.sprites.get(spriteId),
-            i,
-            crumblingOverlay
+            spriteId,
+            this.sprites,
+            i
         );
+        if (crumblingOverlay != null) {
+            queue.order(1).submitCrumblingOverlay(
+                this.model,
+                openness,
+                matrices,
+                spriteId.renderType(this.model::renderType),
+                light,
+                overlay,
+                -1,
+                crumblingOverlay
+            );
+        }
         matrices.popPose();
     }
 
@@ -118,7 +129,7 @@ public class EnderiteShulkerBoxBlockEntityRenderer implements BlockEntityRendere
         matrices.translate(0.5F, 0.5F, 0.5F);
         float f = 0.9995F;
         matrices.scale(0.9995F, 0.9995F, 0.9995F);
-        matrices.mulPose(facing.getRotation());
+        matrices.rotate(facing.getRotation());
         matrices.scale(1.0F, -1.0F, -1.0F);
         matrices.translate(0.0F, -1.0F, 0.0F);
     }

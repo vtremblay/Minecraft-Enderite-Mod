@@ -80,8 +80,7 @@ public class EnderiteShieldRenderer implements SpecialModelRenderer<DataComponen
             -1,
             base,
             this.sprites,
-            i,
-            null
+            i
         );
         if (hasPatterns) {
             BannerRenderer.submitPatterns(
@@ -94,13 +93,12 @@ public class EnderiteShieldRenderer implements SpecialModelRenderer<DataComponen
                 Unit.INSTANCE,
                 false,
                 Objects.requireNonNullElse(baseColor, DyeColor.WHITE),
-                patterns,
-                null
+                patterns
             );
         }
         if (glint) {
             queue.order(patterns.layers().size() + 1)
-                .submitModel(this.model, Unit.INSTANCE, matrixStack, RenderTypes.entityGlint(), light, overlay, -1, this.sprites.get(base), 0, null);
+                .submitModel(this.model, Unit.INSTANCE, matrixStack, RenderTypes.patternedShieldGlint(), light, overlay, -1, this.sprites.get(base), 0);
         }
         if (this.charged) {
             // Custom end portal shader

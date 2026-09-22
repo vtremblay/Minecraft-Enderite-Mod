@@ -45,12 +45,14 @@ public class EnderiteShulkerBoxBlock extends ShulkerBoxBlock {
 
     private static final BlockBehaviour.StatePredicate SUFFOCATES_PREDICATE = (state, world, pos) -> !(world.getBlockEntity(pos) instanceof EnderiteShulkerBoxBlockEntity shulkerBoxBlockEntity) || shulkerBoxBlockEntity.suffocates();
 
+    private static final BlockBehaviour.StateArgumentPredicate<AABB> VIEW_BLOCKING_PREDICATE = (state, world, pos, box) -> !(world.getBlockEntity(pos) instanceof EnderiteShulkerBoxBlockEntity shulkerBoxBlockEntity) || shulkerBoxBlockEntity.suffocates();
+
     public EnderiteShulkerBoxBlock(String id) {
         super((DyeColor) null, Properties.ofFullCopy(Blocks.SHULKER_BOX)
             .setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(EnderiteMod.MOD_ID, id)))
             .noOcclusion().strength(2.0f, 17.0f)
             .isSuffocating(SUFFOCATES_PREDICATE)
-            .isViewBlocking(SUFFOCATES_PREDICATE)
+            .isViewBlocking(VIEW_BLOCKING_PREDICATE)
             .sound(SoundType.NETHERITE_BLOCK));
     }
 
