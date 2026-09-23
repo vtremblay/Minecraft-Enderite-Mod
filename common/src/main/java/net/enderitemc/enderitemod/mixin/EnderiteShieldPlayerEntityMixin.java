@@ -34,7 +34,10 @@ public abstract class EnderiteShieldPlayerEntityMixin extends LivingEntity {
     public abstract ItemCooldowns getCooldowns();
 
     @Inject(at = @At("HEAD"), method = "blockUsingItem")
-    private void enderitemod$portIt(ServerLevel level, LivingEntity attacker, DamageSource source, float damage, CallbackInfo ci) {
+    // 26.3 added a trailing boolean to Player.blockUsingItem. The mixin handler
+    // must mirror the target descriptor exactly or Mixin refuses to apply it and
+    // the server dies at bootstrap. Parameter is unused here, as the others are.
+    private void enderitemod$portIt(ServerLevel level, LivingEntity attacker, DamageSource source, float damage, boolean flag, CallbackInfo ci) {
         if (this.isShiftKeyDown() && this.useItem.getItem() instanceof EnderiteShield
             && !this.getCooldowns().isOnCooldown(this.useItem)) {
 
